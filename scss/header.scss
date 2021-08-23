@@ -1,0 +1,24 @@
+.header{
+    background-color: $color-primary;
+};
+
+.nav{
+    max-width: 1400px;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    &__logo{
+        height: 200px;
+        width: 450px;
+    }
+    &__link{
+        font-size: 1.5rem;
+        color: white;
+        &__a{
+            text-decoration: none;
+            color: $color-secondary;
+            margin: 20px;
+        }
+    }
+}
