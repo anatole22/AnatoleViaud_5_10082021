@@ -12,7 +12,8 @@ function getItems() {
         })
         .catch((error) => {
             let ItemsContainer = document.querySelector(".items-container");
-            ItemsContainer.innerHTML = "Une erreur semble survenir, veuillez attendre quelques instant et réesseyer, <br> si le problème persite contacter nous.";
+            ItemsContainer.innerHTML = "Une erreur semble survenir, veuillez attendre quelques instant et réessayer, <br> si le problème persite contacter nous.";
+            ItemsContainer.style.textAlign = "center";
         })
 
 // répartie les données des produits dans le DOM

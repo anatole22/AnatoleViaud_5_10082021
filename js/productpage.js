@@ -6,12 +6,15 @@ const productTitle = document.querySelector(".item-card__info__title");
 const productDescription = document.querySelector(".item-card__info__description");
 const productPrice = document.querySelector(".item-card__info__price");
 const productModel =  document.querySelector("#model-select");
+const productNum = document.querySelector("#camnum")
+const addBtn = document.querySelector(".item-card__info__button");
 
 
 main();
 
 function main() {
     getItems();
+    addToBasket();
 }
 
 function getItems() {
@@ -21,7 +24,9 @@ function getItems() {
         })
         .catch((error) => {
             let ItemsContainer = document.querySelector(".item-card");
-            ItemsContainer.innerHTML = "Une erreur semble survenir, veuillez attendre quelques instant et réesseyer, <br> si le problème persite contacter nous.";
+            ItemsContainer.innerHTML = "Une erreur semble survenir, veuillez attendre quelques instant et réessayer, <br> si le problème persite contacter nous.";
+            ItemsContainer.style.textAlign = "center";
+            ItemsContainer.style.padding = "10px";
         })
 
         // répartie les données du produit dans le DOM
@@ -47,4 +52,26 @@ function getItems() {
                 modelSelect.appendChild(option);
             }
         });
+    }
+
+function addToBasket() {
+    
+    addBtn.addEventListener("click", () => {
+        if (productNum.value > 0 && productNum.value < 9) {
+// Création du produit ajouté au panier
+let productAdded = {
+    name: productTitle.innerHTML,
+    description: productDescription.innerHTML,
+    price: parseFloat(productPrice.innerHTML),
+    _id: id,
+};
+
+// Gestion du localstorage
+
+let productinbasket = [];
+
+productinbasket.push(productAdded);
+localStorage.setItem("products", JSON.stringify(productAdded));
+        }    
+    })
 }

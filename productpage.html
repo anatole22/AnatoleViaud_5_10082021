@@ -1,18 +1,21 @@
 <!doctype html>
 <html lang="fr">
 <head>
-  <meta charset="utf-8">
-  <title>Orinoco</title>
-  <link rel="stylesheet" href="css/style.css">
-  <script src="https://kit.fontawesome.com/b4b2f2557b.js" crossorigin="anonymous"></script>
+    <meta charset="utf-8">
+    <title>Orinoco</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/b4b2f2557b.js" crossorigin="anonymous"></script>
 </head>
 <body>
     <header class="header">
         <nav class="nav">
             <img class="nav__logo"  src="images/logo.png" alt="logo orinoco">  
             <div class="nav__link">         
-                <a class="nav__link__a" href="index.html">Acceuil</a>
-                <a class="nav__link__a" href="#">Panier</a>
+                <a class="nav__link__a" href="index.html">Accueil</a>
+                <a class="nav__link__a" href="basketpage.html">Panier</a>
             </div>
         </nav>
     </header>
@@ -24,9 +27,12 @@
                 <h2 class="item-card__info__title"></h2>
                 <p class="item-card__info__description"></p>
                 <div class="item-card__info__price"></div>
-                <select class="item-card__info__model" name="" id="model-select">
-                </select>
-                <button class="item-card__info__button">Ajouté au Panier</button>
+                <select class="item-card__info__model" name="" id="model-select"></select>
+                <label for="camnum" class="item-card__info__num">
+                    <input id="camnum" type="number" name="camnum" value="1" min="1">
+                </label>
+                <button type="button" class="item-card__info__button">Ajouté au Panier</button>
+                
             </div>
         </section>
     </main>
