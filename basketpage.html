@@ -20,7 +20,40 @@
         </nav>
     </header>
     <main class="main"> 
-        
+        <h2>Votre Panier</h2>
+        <section class="basket">
+            <p class="basket__empty">Désolé, votre panier est vide pour le moment!</p>
+        </section>
+        <section class="total">
+            <button class="delet-basket">Vider le panier</button>
+            <div class="total__price"></div>
+        </section>
+        <form class="form" id="form">
+            <h2 class="form__title">Formulaire de commande</h2>
+            <div class="form__error"></div>
+            <div class="form__firstname">
+                <label for="firstname">Prénom :</label>
+                <input class="form__firstname__input" type="text" id="firstname" name="user_firstname" required>
+            </div>
+            <div class="form__lastname">
+                <label for="lastname">Nom :</label>
+                <input class="form__lastname__input" type="text" id="lastname" name="user_lastname" required>
+            </div>
+            <div class="form__adress">
+                <label for="adress">Adresse postale :</label>
+                <input class="form__adress__input" type="text" id="adress" name="delivery_adress" required>
+            </div>
+            <div class="form__city">
+                <label for="city">Ville :</label>
+                <input class="form__city__input" type="text" id="city" name="delivery_city" required>
+            </div>
+            <div class="form__mail">
+                <label for="mail">Email :</label>
+                <input class="form__mail__input" type="email" id="mail" name="user_mail" required>
+            </div>
+            
+            <button class="form__button">validé commande</button>
+        </form>
     </main>
     <footer class="footer">   
         <div class="footer__link">
@@ -32,6 +65,6 @@
             </div>
         </div>
     </footer>
-    <script src="js/productpage.js"></script>
+    <script src="js/basketpage.js"></script>
 </body>
 </html>
