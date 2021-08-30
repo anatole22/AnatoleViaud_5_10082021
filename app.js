@@ -4,6 +4,7 @@ const path = require('path');
 const cameraRoutes = require('./routes/camera');
 const teddyRoutes = require('./routes/teddy');
 const furnitureRoutes = require('./routes/furniture');
+
 const app = express();
 
 app.use((req, res, next) => {

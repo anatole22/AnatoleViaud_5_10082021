@@ -89,11 +89,11 @@ function checkFormAndPost() {
 
     const submit = document.querySelector(".form__button");
     let error = document.querySelector(".form__error")
-    let inputFirstName = document.querySelector("#firstname");
-    let inputLastName = document.querySelector("#lastname");
-    let inputAddress = document.querySelector("#adress");
+    let inputFirstName = document.querySelector("#firstName");
+    let inputLastName = document.querySelector("#lastName");
+    let inputAddress = document.querySelector("#address");
     let inputCity = document.querySelector("#city");
-    let inputEmail = document.querySelector("#mail");
+    let inputEmail = document.querySelector("#email");
 
     submit.addEventListener("click", (e) => {
         if (
@@ -112,16 +112,16 @@ function checkFormAndPost() {
 
                 const order = {
                     contact : {
-                        firstName : inputFirstName.value,
-                        lastName : inputLastName.value,
-                        address : inputAddress.value,
-                        city : inputCity.value,
-                        email : inputEmail.value
+                        firstName: inputFirstName.value,
+                        lastName: inputLastName.value,
+                        city: inputCity.value,
+                        address: inputAddress.value,
+                        email: inputEmail.value
                     },
                     products: productsBought,
                 };
 
-                const option = {
+                const options = {
                     method: "POST",
                     body: JSON.stringify(order),
                     Headers: { "content-Type": "application/json" },
@@ -130,12 +130,12 @@ function checkFormAndPost() {
                 let priceConfirmation = document.querySelector(".total__price").innerText;
                 priceConfirmation = priceConfirmation.split(" :");
 
-                fetch("http://localhost:5500/api/cameras/order", option)
+                fetch("http://localhost:3000/api/cameras/order", options)
                 .then((response) => response.json())
-                .then((cameras) => {
+                .then((data) => {
                     localStorage.clear();
-                    console.log(cameras);
-                    localStorage.setItem("orderId", cameras.orderId);
+                    console.log(data);
+                    localStorage.setItem("orderId", data.orderId);
                     localStorage.setItem("total", priceConfirmation[1]);
 
                     document.location.href = "thankspage.html";

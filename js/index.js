@@ -6,7 +6,7 @@ function main() {
 
 // récupere les caméras depuis l'API
 function getItems() {
-    fetch("http://localhost:5500/api/cameras")
+    fetch("http://localhost:3000/api/cameras")
         .then( function (response){
             return response.json();
         })

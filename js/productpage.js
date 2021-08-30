@@ -18,7 +18,7 @@ function main() {
 }
 
 function getItems() {
-    fetch(`http://localhost:5500/api/cameras/${id}`)
+    fetch(`http://localhost:3000/api/cameras/${id}`)
         .then(function (response) {
             return response.json();
         })
