@@ -132,10 +132,10 @@ function checkFormAndPost() {
 
                 fetch("http://localhost:5500/api/cameras/order", option)
                 .then((response) => response.json())
-                .then((data) => {
+                .then((cameras) => {
                     localStorage.clear();
-                    console.log(data);
-                    localStorage.setItem("orderId", data.orderId);
+                    console.log(cameras);
+                    localStorage.setItem("orderId", cameras.orderId);
                     localStorage.setItem("total", priceConfirmation[1]);
 
                     document.location.href = "thankspage.html";
