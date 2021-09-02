@@ -130,7 +130,7 @@ function checkFormAndPost() {
                 let priceConfirmation = document.querySelector(".total__price").innerText;
                 priceConfirmation = priceConfirmation.split(" :");
 
-                fetch("http://localhost:3000/api/cameras/order", options)
+                fetch(`http://localhost:3000/api/cameras/order`, options)
                 .then((response) => response.json())
                 .then((data) => {
                     localStorage.clear();
