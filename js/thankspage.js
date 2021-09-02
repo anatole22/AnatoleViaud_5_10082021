@@ -11,5 +11,5 @@ function displayOrder() {
     totalOrder.innerText = localStorage.getItem("total");
     orderID.innerText = localStorage.getItem("orderId");
 
-    // localStorage.clear();
+    localStorage.clear();
 }

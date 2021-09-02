@@ -15,7 +15,18 @@ main();
 function main() {
     getItems();
     addToBasket();
+    checkIf404();
 }
+
+function checkIf404() {
+    window.addEventListener("error", (e) => {
+        let container = document.querySelector(".item-card");
+        container.innerHTML = `<p>Cette page n'existe pas. <a class="back-to-home" href="index.html">Retourner dans la boutique</a></p>`;
+        let backToHomeLink = document.querySelector(".back-to-home");
+      },
+      true
+    );
+  }
 
 function getItems() {
     fetch(`http://localhost:3000/api/cameras/${id}`)
@@ -62,9 +73,9 @@ function addToBasket() {
         if (productNum.value > 0 && productNum.value < 100) {
 // Création du produit ajouté au panier
 let productAdded = {
-    img: productImg.src,
+    // img: productImg.src,
     name: productTitle.innerHTML,
-    description: productDescription.innerHTML,
+    // description: productDescription.innerHTML,
     price: article.price,
     _id: id,
 };
@@ -73,12 +84,12 @@ let productAdded = {
 
 let productinbasket = [];
 
-if (localStorage.getItem("product") !== null){
-    productinbasket = JSON.parse(localStorage.getItem("product"));
+if (localStorage.getItem("products") !== null){
+    productinbasket = JSON.parse(localStorage.getItem("products"));
 }
 
 productinbasket.push(productAdded);
-localStorage.setItem("product", JSON.stringify(productinbasket));
+localStorage.setItem("products", JSON.stringify(productinbasket));
 
 confirmation.style.visibility ="visible";
 textConfirmation.innerHTML = `Vous avez ajouté un nouveau produit à votre panier !`;

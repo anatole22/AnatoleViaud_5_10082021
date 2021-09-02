@@ -1,5 +1,5 @@
 let basket = document.querySelector(".basket");
-let copyOfLS = JSON.parse(localStorage.getItem("product"));
+let copyOfLS = JSON.parse(localStorage.getItem("products"));
 
 main();
 
@@ -15,20 +15,20 @@ function getFromBasket() {
 
 let emptyBasket = document.querySelector(".basket__empty");
 
-if (localStorage.getItem("product")) {
+if (localStorage.getItem("products")) {
         emptyBasket.style.display = "none";
 }
 
-for (let products in copyOfLS) {
+for (let produit in copyOfLS) {
    
-    let productImg = document.createElement("div");
-    basket.appendChild(productImg);
-    productImg.classList.add("basket__img");
+    // let productImg = document.createElement("div");
+    // basket.appendChild(productImg);
+    // productImg.classList.add("basket__img");
 
-    let productPicture = document.createElement("img");
-    productImg.appendChild(productPicture);
-    productPicture.classList.add("basket__img__picture");
-    productPicture.src = copyOfLS[products].img;
+    // let productPicture = document.createElement("img");
+    // productImg.appendChild(productPicture);
+    // productPicture.classList.add("basket__img__picture");
+    // productPicture.src = copyOfLS[produit].img;
 
     let productInfo = document.createElement("div");
     basket.appendChild(productInfo);
@@ -37,19 +37,19 @@ for (let products in copyOfLS) {
     let productName = document.createElement("h2");
     productInfo.appendChild(productName);
     productName.classList.add("basket__info__title");
-    productName.innerHTML = copyOfLS[products].name;
+    productName.innerHTML = copyOfLS[produit].name;
 
-    let productDescription = document.createElement("p");
-    productInfo.appendChild(productDescription);
-    productDescription.classList.add("basket__info__description");
-    productDescription.innerHTML = copyOfLS[products].description;
+    // let productDescription = document.createElement("p");
+    // productInfo.appendChild(productDescription);
+    // productDescription.classList.add("basket__info__description");
+    // productDescription.innerHTML = copyOfLS[produit].description;
 
     let productPrice = document.createElement("div");
     productInfo.appendChild(productPrice);
     productPrice.classList.add("basket__info__price");
     productPrice.innerHTML = new Intl.NumberFormat("fr-FR", {
         style: "currency",
-        currency: "EUR",}).format(copyOfLS[products].price);
+        currency: "EUR",}).format(copyOfLS[produit].price);
     }
 }
 
@@ -89,19 +89,19 @@ function checkFormAndPost() {
 
     const submit = document.querySelector(".form__button");
     let error = document.querySelector(".form__error")
-    let inputFirstName = document.querySelector("#firstName");
+    let inputName = document.querySelector("#firstName");
     let inputLastName = document.querySelector("#lastName");
-    let inputAddress = document.querySelector("#address");
+    let inputAdress = document.querySelector("#address");
     let inputCity = document.querySelector("#city");
-    let inputEmail = document.querySelector("#email");
+    let inputMail = document.querySelector("#email");
 
     submit.addEventListener("click", (e) => {
         if (
-            !inputFirstName.value ||
+            !inputName.value ||
             !inputLastName.value ||
-            !inputAddress.value ||
+            !inputAdress.value ||
             !inputCity.value ||
-            !inputEmail.value
+            !inputMail.value
          ) {
             error.innerHTML = "Vous devez renseigner tous les champs !";
             e.preventDefault(); }
@@ -110,20 +110,20 @@ function checkFormAndPost() {
                 let productsBought = [];
                 productsBought.push(copyOfLS);
 
-                const order = {
-                    contact : {
-                        firstName: inputFirstName.value,
+                const body = {
+                    contact: {
+                        firstName: inputName.value,
                         lastName: inputLastName.value,
+                        address: inputAdress.value,
                         city: inputCity.value,
-                        address: inputAddress.value,
-                        email: inputEmail.value
+                        email: inputMail.value,
                     },
                     products: productsBought,
                 };
 
                 const options = {
                     method: "POST",
-                    body: JSON.stringify(order),
+                    body: JSON.stringify(body),
                     Headers: { "content-Type": "application/json" },
                 };
 
@@ -134,9 +134,9 @@ function checkFormAndPost() {
                 .then((response) => response.json())
                 .then((data) => {
                     localStorage.clear();
-                    console.log(data);
-                    localStorage.setItem("orderId", data.orderId);
+                    console.log(data)
                     localStorage.setItem("total", priceConfirmation[1]);
+                    localStorage.setItem("orderId", data.orderId);
 
                     document.location.href = "thankspage.html";
                 })
