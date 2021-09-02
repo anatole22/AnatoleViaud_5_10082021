@@ -30,14 +30,14 @@ function getItems() {
                 itemLink.href = `productpage.html?id=${resultAPI[item]._id}`;
                 itemLink.classList.add("card__link");
 
-                // let itemImgDiv = document.createElement("div");
-                // itemLink.appendChild(itemImgDiv);
-                // itemImgDiv.classList.add("card__link__img");
+                let itemImgDiv = document.createElement("div");
+                itemLink.appendChild(itemImgDiv);
+                itemImgDiv.classList.add("card__link__img");
 
-                // let itemImg = document.createElement("img");
-                // itemImgDiv.appendChild(itemImg);
-                // itemImg.classList.add("card__link__img__item");
-                // itemImg.src = resultAPI[item].imageUrl;
+                let itemImg = document.createElement("img");
+                itemImgDiv.appendChild(itemImg);
+                itemImg.classList.add("card__link__img__item");
+                itemImg.src = resultAPI[item].imageUrl;
 
                 let itemInfoDiv = document.createElement("div");
                 itemLink.appendChild(itemInfoDiv);
