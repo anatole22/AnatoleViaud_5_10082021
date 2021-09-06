@@ -71,7 +71,12 @@ function countTotalInCart() {
   });
 
   // Transformer en nombre chaque valeur du tableau
-  arrayOfPrice = arrayOfPrice.map((x) => parseFloat(x));
+  
+
+  arrayOfPrice = arrayOfPrice.map((x) => {
+    let a = x.split('&');
+    return(parseFloat(a[0].replace(/\s+/g, '')));
+  });
 
   // Additionner les valeurs du tableau pour avoir le prix total
   const reducer = (acc, currentVal) => acc + currentVal;
