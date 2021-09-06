@@ -5,18 +5,24 @@
 .title{
     text-align: center;
     font-size: 3rem;
+    margin-top: 40px;
 } 
 .products{
     display: flex;
-    justify-content: flex-start;
+    justify-content: space-between;
     flex-wrap: wrap;
+    margin-top: 20px;
+    margin-bottom: 20px;
     &__product{
         background-color: lightgrey;
-        width: 48%;
-        margin: 10px;
+        margin-top: 20px;
+        margin-bottom: 20px;
+        width: 49%;
         border-radius: 20px;
-        @media (max-width: 1025px) {
-            width: 100%;
+        @media (max-width: 700px) {
+            width: 90%;
+            margin-right: auto;
+            margin-left: auto;
         }
     }
 .product-link{
@@ -27,7 +33,7 @@
         width: 100%;
     }
     &__infos{
-        padding: 0 20px 20px 20px;
+        padding: 20px;
         &__title{
             font-size: 3rem;
         }
