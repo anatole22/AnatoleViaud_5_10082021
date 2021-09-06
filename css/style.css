@@ -112,6 +112,12 @@ p {
   align-items: center;
   font-size: 2rem;
 }
+@media (max-width: 500px) {
+  .footer {
+    flex-direction: column;
+    justify-content: space-around;
+  }
+}
 .footer__link {
   color: black;
 }
@@ -162,8 +168,18 @@ p {
 .products .product-link__infos__title {
   font-size: 3rem;
 }
+@media (max-width: 500px) {
+  .products .product-link__infos__title {
+    font-size: 1.5rem;
+  }
+}
 .products .product-link__infos__price {
   font-size: 2rem;
+}
+@media (max-width: 500px) {
+  .products .product-link__infos__price {
+    font-size: 1rem;
+  }
 }
 
 .img-size {
@@ -269,10 +285,10 @@ p {
   box-shadow: 0px 0px 10px 0px rgba(63, 63, 63, 0.49);
 }
 .container .cart-card .cart {
-  margin-left: 10px;
+  margin: auto;
 }
 .container .cart-card__recap {
-  margin: 10px 0 10px 10px;
+  margin: auto;
   width: 90%;
   background: grey;
 }
@@ -321,6 +337,7 @@ p {
 }
 .container .cart-card__form {
   width: 100%;
+  margin-top: 10px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -335,15 +352,30 @@ p {
   justify-content: flex-start;
   align-items: stretch;
 }
+@media (max-width: 500px) {
+  .container .cart-card__form .form {
+    justify-content: center;
+  }
+}
 .container .cart-card__form .name-and-lastname {
   display: flex;
   justify-content: space-between;
   width: 100%;
 }
+@media (max-width: 500px) {
+  .container .cart-card__form .name-and-lastname {
+    flex-direction: column;
+  }
+}
 .container .cart-card__form .postal-and-city {
   display: flex;
   justify-content: space-between;
   width: 100%;
+}
+@media (max-width: 500px) {
+  .container .cart-card__form .postal-and-city {
+    flex-direction: column;
+  }
 }
 .container .cart-card__form .cart-card__form-line {
   margin: 5px 0px;

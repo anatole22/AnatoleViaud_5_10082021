@@ -9,6 +9,10 @@
     height: 150px;
     align-items: center;
     font-size: 2rem;
+    @media (max-width: 500px) {
+        flex-direction: column;
+        justify-content: space-around;
+    }
     &__link{
         color: black;
     }
