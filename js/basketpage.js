@@ -1,5 +1,5 @@
 let basket = document.querySelector(".basket");
-let copyOfLS = JSON.parse(localStorage.getItem("products"));
+let copyOfLS = JSON.parse(localStorage.getItem("product"));
 
 main();
 
@@ -15,7 +15,7 @@ function getFromBasket() {
 
 let emptyBasket = document.querySelector(".basket__empty");
 
-if (localStorage.getItem("products")) {
+if (localStorage.getItem("product")) {
         emptyBasket.style.display = "none";
 }
 
@@ -62,7 +62,7 @@ function totalInBasket () {
     }
 
     arrayOfPrice = arrayOfPrice.filter((el) => {
-        return el !=undefined;
+        return el != undefined;
     });
 
     
@@ -88,20 +88,20 @@ function toEmptyBasket() {
 function checkFormAndPost() {
 
     const submit = document.querySelector(".form__button");
-    let error = document.querySelector(".form__error")
-    let inputName = document.querySelector("#firstName");
-    let inputLastName = document.querySelector("#lastName");
-    let inputAdress = document.querySelector("#address");
-    let inputCity = document.querySelector("#city");
-    let inputMail = document.querySelector("#email");
+    let error = document.querySelector(".form__error");
+    let firstName = document.querySelector("#firstName");
+    let lastName = document.querySelector("#lastName");
+    let address = document.querySelector("#address");
+    let city = document.querySelector("#city");
+    let email = document.querySelector("#email");
 
     submit.addEventListener("click", (e) => {
         if (
-            !inputName.value ||
-            !inputLastName.value ||
-            !inputAdress.value ||
-            !inputCity.value ||
-            !inputMail.value
+            !firstName.value ||
+            !lastName.value ||
+            !address.value ||
+            !city.value ||
+            !email.value
          ) {
             error.innerHTML = "Vous devez renseigner tous les champs !";
             e.preventDefault(); }
@@ -110,27 +110,27 @@ function checkFormAndPost() {
                 let productsBought = [];
                 productsBought.push(copyOfLS);
 
-                const body = {
+                const order = {
                     contact: {
-                        firstName: inputName.value,
-                        lastName: inputLastName.value,
-                        address: inputAdress.value,
-                        city: inputCity.value,
-                        email: inputMail.value,
+                      firstName: firstName.value,
+                      lastName: lastName.value,
+                      city: city.value,
+                      address: address.value,
+                      email: email.value
                     },
                     products: productsBought,
-                };
+                  };
 
                 const options = {
                     method: "POST",
-                    body: JSON.stringify(body),
-                    Headers: { "content-Type": "application/json" },
-                };
+                    body: JSON.stringify(order),
+                    headers: { "Content-Type": "application/json" },
+                  };
 
                 let priceConfirmation = document.querySelector(".total__price").innerText;
                 priceConfirmation = priceConfirmation.split(" :");
 
-                fetch(`http://localhost:3000/api/cameras/order`, options)
+                fetch("http://localhost:3000/api/teddies/order", options)
                 .then((response) => response.json())
                 .then((data) => {
                     localStorage.clear();

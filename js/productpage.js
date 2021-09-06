@@ -13,23 +13,23 @@ const addBtn = document.querySelector(".item-card__info__button");
 main();
 
 function main() {
+    // checkIf404();
     getItems();
     addToBasket();
-    checkIf404();
-}
+    }
 
-function checkIf404() {
-    window.addEventListener("error", (e) => {
-        let container = document.querySelector(".item-card");
-        container.innerHTML = `<p>Cette page n'existe pas. <a class="back-to-home" href="index.html">Retourner dans la boutique</a></p>`;
-        let backToHomeLink = document.querySelector(".back-to-home");
-      },
-      true
-    );
-  }
+// function checkIf404() {
+//     window.addEventListener("error", (e) => {
+//         let container = document.querySelector(".item-card");
+//         container.innerHTML = `<p>Cette page n'existe pas. <a class="back-to-home" href="index.html">Retourner dans la boutique</a></p>`;
+//         let backToHomeLink = document.querySelector(".back-to-home");
+//       },
+//       true
+//     );
+//   }
 
 function getItems() {
-    fetch(`http://localhost:3000/api/cameras/${id}`)
+    fetch(`http://localhost:3000/api/teddies/${id}`)
         .then(function (response) {
             return response.json();
         })
@@ -56,10 +56,10 @@ function getItems() {
             }).format(article.price);
 
             let modelSelect = document.getElementById("model-select");
-            for (let i = 0; i < article.lenses.length; i++) {
+            for (let i = 0; i < article.colors.length; i++) {
                 let option = document.createElement("option");
-                option.innerText = article.lenses[i];
-                option.value = article.lenses[i];
+                option.innerText = article.colors[i];
+                option.value = article.colors[i];
                 modelSelect.appendChild(option);
             }
         });
@@ -84,12 +84,12 @@ let productAdded = {
 
 let productinbasket = [];
 
-if (localStorage.getItem("products") !== null){
-    productinbasket = JSON.parse(localStorage.getItem("products"));
+if (localStorage.getItem("product") !== null){
+    productinbasket = JSON.parse(localStorage.getItem("product"));
 }
 
 productinbasket.push(productAdded);
-localStorage.setItem("products", JSON.stringify(productinbasket));
+localStorage.setItem("product", JSON.stringify(productinbasket));
 
 confirmation.style.visibility ="visible";
 textConfirmation.innerHTML = `Vous avez ajouté un nouveau produit à votre panier !`;
