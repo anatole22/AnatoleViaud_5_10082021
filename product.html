@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Orinoco</title>
+
+    <!--CSS-->
+    <link rel="stylesheet" href="css/style.css">
+    <!-- ICON-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.min.css">
+    <!-- FONT-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap" rel="stylesheet">
+
+</head>
+<body>
+    <header class="background-header">
+        <div class="header-container">
+            <div class="nav">
+                <a href="index.html"><h1 class="nav__logo">ORINOCO</h1></a>
+                <a href="basket.html"><div class="nav__cart">
+                    <i class="fas fa-shopping-cart nav__cart__icon"></i>
+                </a>
+                </div>
+            </div>
+        </div>
+    </header>
+    <main>
+        <div class="container">
+            <div class="product-card">
+                <div class="product-card__img">
+                    <img src="" alt="" class="img">
+                </div>
+                <div class="product-card__infos">
+                    <div class="product-card__infos__title"></div>
+                    <div class="product-card__infos__description"></div>
+                    <div class="product-card__infos__price"></div>
+                    <div class="product-card__infos__quantity">
+                        <label for="Num">Quantité :</label>
+                        <input id="num" type="number" name="num" value="1" min="1">
+                    </div>
+                    <div class="product-card__infos__varnish">
+                        <label for="varnish-select">Vernis :</label>
+                        <select name="varnish" id="varnish-select">
+                        </select>
+                    </div>
+                    <div class="added-to-cart-confirmation">
+                        <p class="confirmation-text"></p>
+                    </div>
+                    <div class="product-card__infos__buttons">
+                        <a href="index.html">
+                            <div class="product-card__infos__button back-to-home">
+                                Revenir aux peluches
+                            </div>
+                        </a>
+                        <a href="#">
+                            <div class="product-card__infos__button add-to-cart">
+                                Ajouter au panier
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer class="background-footer">
+        <div class="footer">
+            <a href="" class="footer__link">Contact</a>
+            <a href="" class="footer__link">Mentions légales</a>
+        </div>
+    </footer>
+    
+    <script src="js/product.js"></script>
+
+</body>
+</html>

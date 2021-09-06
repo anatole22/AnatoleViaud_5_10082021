@@ -1,79 +1,65 @@
 main();
 
 function main() {
-    getItems();
+  getArticles();
 }
 
-// récupere les caméras depuis l'API
-function getItems() {
-    fetch(`http://localhost:3000/api/teddies`)
-        .then( function (response){
-            return response.json();
-        })
-        .catch((error) => {
-            let ItemsContainer = document.querySelector(".items-container");
-            ItemsContainer.innerHTML = "Une erreur semble survenir, veuillez attendre quelques instant et réessayer, <br> si le problème persite contacter nous.";
-            ItemsContainer.style.textAlign = "center";
-        })
+// Récupérer les articles depuis l'API
+function getArticles() {
+  fetch("http://localhost:3000/api/Furniture")
+    .then(function (res) {
+      return res.json();
+    })
+    .catch((error) => {
+      let productsContainer = document.querySelector(".products-container");
+      productsContainer.innerHTML =
+        "Nous n'avons pas réussi à afficher nos nounours. Avez vous bien lancé le serveur local (Port 3000) ? <br>Si le problème persiste, contactez-nous.";
+      productsContainer.style.textAlign = "center";
+      productsContainer.style.padding = "30vh 0";
+    })
 
-// répartie les données des produits dans le DOM
-        .then(function(resultAPI) {
-            const items = resultAPI;
-            console.log(items);
-            for (let item in items) {
-                let itemCard = document.createElement("div");
-                document.querySelector(".items-container").appendChild(itemCard);
-                itemCard.classList.add("card");
+    // Dispatcher les données de chaque produit (prix, nom...) dans le DOM
+    .then(function (resultatAPI) {
+      const articles = resultatAPI;
+      console.log(articles);
+      for (let article in articles) {
+        let productCard = document.createElement("div");
+        document.querySelector(".products").appendChild(productCard);
+        productCard.classList.add("products__product");
 
-                let itemLink = document.createElement("a");
-                itemCard.appendChild(itemLink);
-                itemLink.href = `productpage.html?id=${resultAPI[item]._id}`;
-                itemLink.classList.add("card__link");
+        let productLink = document.createElement("a");
+        productCard.appendChild(productLink);
+        productLink.href = `product.html?id=${resultatAPI[article]._id}`;
+        productLink.classList.add("product-link");
 
-                let itemImgDiv = document.createElement("div");
-                itemLink.appendChild(itemImgDiv);
-                itemImgDiv.classList.add("card__link__img");
+        let productImgDiv = document.createElement("div");
+        productLink.appendChild(productImgDiv);
+        productImgDiv.classList.add("product-link__img");
 
-                let itemImg = document.createElement("img");
-                itemImgDiv.appendChild(itemImg);
-                itemImg.classList.add("card__link__img__item");
-                itemImg.src = resultAPI[item].imageUrl;
+        let productImg = document.createElement("img");
+        productImgDiv.appendChild(productImg);
+        productImg.src = resultatAPI[article].imageUrl;
+        productImg.classList.add("img-size");
 
-                let itemInfoDiv = document.createElement("div");
-                itemLink.appendChild(itemInfoDiv);
-                itemInfoDiv.classList.add("card__link__description");
+        let productInfosDiv = document.createElement("div");
+        productLink.appendChild(productInfosDiv);
+        productInfosDiv.classList.add("product-link__infos");
 
-                let itemTitle = document.createElement("h2");
-                itemInfoDiv.appendChild(itemTitle);
-                itemTitle.classList.add("card__link__description__title");
-                itemTitle.innerHTML = resultAPI[item].name;
+        let productInfoTitle = document.createElement("div");
+        productInfosDiv.appendChild(productInfoTitle);
+        productInfoTitle.classList.add("product-link__infos__title");
+        productInfoTitle.innerHTML = resultatAPI[article].name;
 
-                let itemPrice = document.createElement("div");
-                itemInfoDiv.appendChild(itemPrice);
-                itemPrice.classList.add("card__link__description__price");
-                // formatage du prix
-                resultAPI[item].price = resultAPI[item].price / 100;
-                itemPrice.innerHTML = new Intl.NumberFormat("fr-FR", {
-                    style: "currency",
-                    currency: "EUR",
-                }).format(resultAPI[item].price);
+        let productInfoPrice = document.createElement("div");
+        productInfosDiv.appendChild(productInfoPrice);
+        productInfoPrice.classList.add("product-link__infos__price");
 
-                let itemDescription = document.createElement("p");
-                itemInfoDiv.appendChild(itemDescription);
-                itemDescription.classList.add("card__link__description__description");
-                itemDescription.innerHTML = resultAPI[item].description;
-                
-            }
-        });
+        // Formatage du prix pour l'afficher en euros
+        resultatAPI[article].price = resultatAPI[article].price / 100;
+        productInfoPrice.innerHTML = new Intl.NumberFormat("fr-FR", {
+          style: "currency",
+          currency: "EUR",
+        }).format(resultatAPI[article].price);
+      }
+    });
 }
-
-
-
-
-
-
-
-
-
-
-
