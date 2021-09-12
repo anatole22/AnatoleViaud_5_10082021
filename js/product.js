@@ -14,23 +14,10 @@ const colorSelect = document.querySelector("#varnish-select");
 main();
 
 function main() {
-//   checkIf404();
+
   getArticles();
   addToCart();
 }
-
-// function checkIf404() {
-//   window.addEventListener("error", (e) => {
-//       let container = document.querySelector(".container");
-//       container.innerHTML = `<p>Cette page n'existe pas. <a class="back-to-home" href="index.html">Retourner dans la boutique ?</a></p>`;
-//       container.style.padding = "40vh 0";
-//       container.style.fontSize = "26px";
-//       let backToHomeLink = document.querySelector(".back-to-home");
-//       backToHomeLink.style.textDecoration = "underline";
-//     },
-//     true
-//   );
-// }
 
 function getArticles() {
   // On récupère uniquement le produit dont on a besoin via le paramètre dans la requête

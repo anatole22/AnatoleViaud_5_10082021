@@ -18,7 +18,7 @@ function getArticles() {
       productsContainer.style.padding = "30vh 0";
     })
 
-    // Dispatcher les données de chaque produit (prix, nom...) dans le DOM
+    // Distribuer les données de chaque artciles (prix, nom...) dans le DOM
     .then(function (resultatAPI) {
       const articles = resultatAPI;
       console.log(articles);
@@ -54,7 +54,7 @@ function getArticles() {
         productInfosDiv.appendChild(productInfoPrice);
         productInfoPrice.classList.add("product-link__infos__price");
 
-        // Formatage du prix pour l'afficher en euros
+        // Formatage du prix en euros
         resultatAPI[article].price = resultatAPI[article].price / 100;
         productInfoPrice.innerHTML = new Intl.NumberFormat("fr-FR", {
           style: "currency",
