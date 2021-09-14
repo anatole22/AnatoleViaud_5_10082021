@@ -132,7 +132,7 @@ function checkFormAndPostRequest() {
       erreur.innerText = "Votre numéro de téléphone n'est pas valide";
     } else {
 
-      // Si le formulaire est valide, le tableau productsBought contiendra un tableau d'objet qui sont les produits acheté, et order contiendra ce tableau ainsi que l'objet qui contient les infos de l'acheteur
+      // Si le formulaire est valide, le tableau productsBought contiendra un tableau d'objet qui sont les produits achetés, et order contiendra ce tableau ainsi que l'objet qui contient les infos de l'acheteur
       let productsBought = [];
       for (let produit in copyOfLS) {
       productsBought.push(copyOfLS[produit]._id);

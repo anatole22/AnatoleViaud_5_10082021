@@ -28,7 +28,7 @@ function getArticles() {
     .catch((error) => {
       let container = document.querySelector(".container");
       container.innerHTML =
-        "Nous n'avons pas réussi à afficher nos nounours. Avez-vous bien lancé le serveur local (Port 3000) ? <br>Si le problème persiste, contactez-nous.";
+        "Nous n'avons pas réussi à afficher nos meubles. Avez-vous bien lancé le serveur local (Port 3000) ? <br>Si le problème persiste, contactez-nous.";
       container.style.textAlign = "center";
       container.style.padding = "45vh 0";
     })
